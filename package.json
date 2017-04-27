@@ -1,7 +1,7 @@
 {
   "name": "pipez",
   "version": "0.0.2",
-  "description": "Function sequencing reloaded.",
+  "description": "Function sequencing reloaded",
   "main": "pipez",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec --watch"

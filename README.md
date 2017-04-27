@@ -1,4 +1,4 @@
-# Pipez
+# Pipez<sup>BETA</sup>
 
 Pipez stands for _pure functional pipelines_. A pipeline is a function composed of other functions, like a sequence. It takes some data as input and pushes it down through, transforming it on each stage until the final result is achieved. Each function's output is an input for the next function in a sequence, and so on.
 
