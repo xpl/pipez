@@ -211,7 +211,7 @@ log = pipez ({ ... })
 
 log.methods ({
 
-    get magenta () { return this.configure ({ 'concat+': text => ansicolor.magenta (text) }) }
+    get magenta () { return this.configure ({ 'concat+': text => '\u001b[35m' + text + '\u001b[39m') } // ANSI styling
 })
 
 log.magenta ('this is magenta colored')
