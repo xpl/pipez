@@ -188,7 +188,7 @@ Prints 'hello world' followed with a cyan timestamp:
 mylog.configure ({ timestamp: { color: 'cyan' } }) ('hello world')
 ```
 
-## Binding to the code
+## Injecting code before and after steps
 
 If you don't want to replace the original behavior, you may bind to the _before_ and the _after_ execution of steps, giving your function a special name, with `+` symbol placed before or after the target step name, respectively. Following code will be chained in just after the `concat` step:
 
