@@ -202,7 +202,7 @@ And this schedules to execute just before the `linebreaks` step:
 log.magenta = log.configure ({ '+linebreaks': text => ansicolor.magenta (text) })
 ```
 
-## Adding prototype methods
+## Adding inherited methods
 
 This adds `magenta` property accessor to the `log`:
 
@@ -217,9 +217,9 @@ log.methods ({
 log.magenta ('this is magenta colored')
 ```
 
-...and it's every derived object:
+...and to it's every derived object:
 
 ```javascript
 mylog = log.configure ({ ... })
-mylog.magenta ('this is magenta colored')
+mylog.magenta ('this is magenta colored too')
 ```
