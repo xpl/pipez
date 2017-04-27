@@ -111,7 +111,7 @@ log = pipez ({
 log ('hello', 'world')
 ```
 
-Each routine can receive the externally configurable parameters (coming as the second formal parameter of a routine). These parameters are local, so no name conflicts with other steps' stuff — both routines can declare the `print` thing here, as an example:
+Each routine can receive the externally configurable parameters (coming as the second formal parameter of a routine). These parameters are local, so no name conflicts with other steps' stuff — both routines can declare a `print` thing here, as an example:
 
 
 ```javascript
