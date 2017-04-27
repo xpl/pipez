@@ -176,7 +176,7 @@ mylog = log.configure ({ timestamp: false }) // timestamp step will be skipped f
 
 You may override a step behavior completely, rather just changing it parameters. Pass a function instead of an object, and it will become a new step implementation. You can also declare and use the new external params as well.
 
-Creates a derived `mylog` function that draws colored timestamps in the end of messages (with the help of the (https://github.com/xpl/ansicolor)[ansicolor] library):
+Creates a derived `mylog` function that draws colored timestamps in the end of messages (with the help of the [ansicolor](https://github.com/xpl/ansicolor) library):
 
 ```javascript
 mylog = log.configure ({ timestamp: (args, { color = 'red' }) => [...args, ansicolor[color] (new Date ())]
