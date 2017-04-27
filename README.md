@@ -142,7 +142,7 @@ mylog = log.configure ({ indent: { characters: '  ' }, timestamp: { print: x => 
 
 ### Ad-hoc configuration
 
-Given the previously defined `mylog` function, prints 'hello world' using with indentation level set to 2:
+Given the previously defined `mylog` function, it prints `hello world` message with the indentation level set to `2`:
 
 ```javascript
 mylog.configure ({ indent: { level: 2 } }) ('hello world')
