@@ -1,0 +1,33 @@
+{
+  "name": "pipez",
+  "version": "0.0.0",
+  "description": "Function sequencing reloaded.",
+  "main": "pipez",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xpl/pipez.git"
+  },
+  "keywords": [
+    "pipe",
+    "function",
+    "sequencing",
+    "configuration",
+    "currying",
+    "AOP",
+    "aspect-oriented programming",
+    "partial application"
+  ],
+  "author": "Vitaly Gordon <rocket.mind@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xpl/pipez/issues"
+  },
+  "homepage": "https://github.com/xpl/pipez",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "mocha": "^2.4.5"
+  }
+}
