@@ -49,7 +49,7 @@ mylog ('hello')
 mylog.configure ({ indent: 2 }) ('world') // ad-hoc configuration
 ```
 
-I recently had made a couple of tiny libraries (see [as-table](https://github.com/xpl/as-table) and [String.ify](https://github.com/xpl/string.ify)) embracing that API design principle, and found it immensely useful in practice.
+I recently had coded a couple of tiny libraries ([as-table](https://github.com/xpl/as-table), [String.ify](https://github.com/xpl/string.ify)) embracing that API design principle, and found it immensely useful in practice.
 
 But as of now, we had only scratched the surface of the hidden complexity landscape that _Pipez_ successfully tackles. When you start thinking about _configuration_ — i.e. what and how can be parameterized externally — once-simple things can quickly start getting really complicated...
 
@@ -176,7 +176,7 @@ mylog = log.configure ({ timestamp: false }) // timestamp step will be skipped f
 
 You may override a step behavior completely, rather just changing it parameters. Pass a function instead of an object, and it will become a new step implementation. You can also declare and use the new external params as well.
 
-Creates a derived `mylog` function that draws colored timestamps in the end of messages (with the help of the [ansicolor](https://github.com/xpl/ansicolor) library):
+Creates a derived `mylog` function that draws ANSI-colored timestamps in the end of messages (using the [ansicolor](https://github.com/xpl/ansicolor) library):
 
 ```javascript
 mylog = log.configure ({ timestamp: (args, { color = 'red' }) => [...args, ansicolor[color] (new Date ())]
