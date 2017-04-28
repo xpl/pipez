@@ -43,7 +43,7 @@ const pipez = module.exports = functions => O.assign (
             return pipez (modifiedFunctions).methods (this.methods_)
         },
 
-        methods_: {},
+        methods_: O.assign ({}, functions),
 
         methods (methods) { return merge (this, merge (this.methods_, methods)) }
     }
