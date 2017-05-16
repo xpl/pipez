@@ -94,5 +94,10 @@ describe ('pipez', () => {
         assert ('<i>ololo</i>', notime.italic ('ololo'))
         assert (undefined, log.italic)
     })
+
+    it ('Accessing the call chain impl', () => {
+
+        assert (['foo', 'bar'], log.impl.linebreaks ('foo\nbar'))
+    })
 })
 

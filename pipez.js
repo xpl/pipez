@@ -13,16 +13,20 @@ const merge = (to, from) => {
 
 const pipez = module.exports = functions => O.assign (
 
+/*  Function of functions (call chain)  */
+
     (...initial) =>
-        O.values (functions)
-         .reduce ((memo, f, k) => f (memo, {}), initial),
+        Reflect.ownKeys (functions) // guaranteed to be in property creation order (as defined by the standard)
+               .reduce ((memo, k) => functions[k] (memo, {}), initial),
+
+/*  Additional methods     */
 
     {
         configure (overrides = {}) {
 
             const modifiedFunctions = {}
 
-            for (const k of Reflect.ownKeys (functions)) { // guaranteed to be in property creation order (as defined by the standard)
+            for (const k of Reflect.ownKeys (functions)) {
 
                 const override = overrides[k],
                       before   = overrides['+' + k] || (x => x),
@@ -43,9 +47,11 @@ const pipez = module.exports = functions => O.assign (
             return pipez (modifiedFunctions).methods (this.methods_)
         },
 
-        methods_: O.assign ({}, functions),
+        methods_: {},
 
-        methods (methods) { return merge (this, merge (this.methods_, methods)) }
+        methods (methods) { return merge (this, merge (this.methods_, methods)) },
+
+        get impl () { return functions }
     }
 )
 
