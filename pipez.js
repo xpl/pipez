@@ -11,48 +11,83 @@ const merge = (to, from) => {
 
 /*  ------------------------------------------------------------------------ */
 
-const pipez = module.exports = functions => O.assign (
+const pipez = module.exports = (functions_, prev) => {
 
-/*  Function of functions (call chain)  */
+    let functions = {} // bound to self
 
-    (...initial) =>
-        Reflect.ownKeys (functions) // guaranteed to be in property creation order (as defined by the standard)
-               .reduce ((memo, k) => functions[k] (memo, {}), initial),
+    const functionNames = Reflect.ownKeys (functions_) // guaranteed to be in property creation order (as defined by the standard)
+    const self = O.assign (
 
-/*  Additional methods     */
+    /*  Function of functions (call chain)  */
 
-    {
-        configure (overrides = {}) {
+        (...initial) => functionNames.reduce ((memo, k) => functions[k].call (self, memo, {}), initial),
 
-            const modifiedFunctions = {}
+    /*  Additional methods     */
 
-            for (const k of Reflect.ownKeys (functions)) {
+        {
+            configure (overrides = {}) {
 
-                const override = overrides[k],
-                      before   = overrides['+' + k] || (x => x),
-                      after    = overrides[k + '+'] || (x => x),
-                      fn       = (typeof override === 'function') ? override : functions[k]
+                const modifiedFunctions = {}
 
-                const boundArgs = (typeof override === 'boolean') ? { yes: override } : (override || {})
+                for (const k of functionNames) {
 
-                modifiedFunctions[k] = (x, args) => {
+                    const override = overrides[k],
+                          before   = overrides['+' + k] || (x => x),
+                          after    = overrides[k + '+'] || (x => x),
+                          fn       = (typeof override === 'function') ? override : functions[k]
 
-                    const newArgs = O.assign ({}, boundArgs, args),
-                          maybeFn = (newArgs.yes === false) ? (x => x) : fn
+                    const boundArgs = (typeof override === 'boolean') ? { yes: override } : (override || {})
 
-                    return after (maybeFn (before (x, newArgs), newArgs), newArgs)
+                    modifiedFunctions[k] = function (x, args) {
+
+                        const newArgs = O.assign ({}, boundArgs, args),
+                              maybeFn = (newArgs.yes === false) ? (x => x) : fn
+
+                        return after.call (this,
+                                    maybeFn.call (this,
+                                        before.call (this, x, newArgs), newArgs), newArgs)
+                    }
                 }
-            }
 
-            return pipez (modifiedFunctions).methods (this.methods_)
-        },
+                return pipez (modifiedFunctions, self).methods (this.methods_)
+            },
 
-        methods_: {},
+            from (name) {
 
-        methods (methods) { return merge (this, merge (this.methods_, methods)) },
+                let subset = null
 
-        get impl () { return functions }
-    }
-)
+                for (const k of functionNames) {
+                    if (k === name) { subset = { takeFirstArgument: (args, cfg) => args[0] } }
+                    if (subset) { subset[k] = functions[k] }
+                }
+
+                return pipez (subset, self)
+            },
+
+            before (name) {
+
+                let subset = {}
+
+                for (const k of functionNames) {
+                    if (k === name) break;
+                    subset[k] = functions[k]
+                }
+
+                return pipez (subset, self)
+            },
+
+            methods_: {},
+
+            methods (methods) { return merge (this, merge (this.methods_, methods)) },
+
+            get impl () { return functions },
+            get prev () { return prev }
+        }
+    )
+
+    for (let [k, f] of O.entries (functions_)) { functions[k] = f.bind (self) }
+
+    return self
+}
 
 /*  ------------------------------------------------------------------------ */

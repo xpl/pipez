@@ -99,5 +99,19 @@ describe ('pipez', () => {
 
         assert (['foo', 'bar'], log.impl.linebreaks ('foo\nbar'))
     })
+
+    it ('.before / .from', () => {
+
+        const concatenated = log.before ('linebreaks') ({ foo: 42 }, 'bar\nqux')
+        const final        = log.from ('linebreaks') (concatenated)
+
+        assert ('{"foo":42}, bar\nqux', concatenated)
+        assert ('[27.3.2017] {"foo":42}, bar\n            qux', final)
+    })
+
+    it ('.prev + this', () => {
+ 
+        // TODO
+    })
 })
 

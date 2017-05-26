@@ -21,7 +21,7 @@
     "partial application"
   ],
   "author": "Vitaly Gordon <rocket.mind@gmail.com>",
-  "license": "MIT",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/xpl/pipez/issues"
   },
