@@ -202,6 +202,20 @@ And this schedules to execute just before the `linebreaks` step:
 log.magenta = log.configure ({ '+linebreaks': text => ansicolor.magenta (text) })
 ```
 
+## Executing just part of a sequence:
+
+Executing all steps before a step (_not including_ it):
+
+```javascript
+let concatenated = log.before ('linebreaks') (...)
+```
+
+Executing all steps after a step, _including_ it:
+
+```javascript
+log.from ('linebreaks') (concatenated)
+```
+
 ## Adding inherited methods
 
 This adds `magenta` property accessor to the `log`:
@@ -222,4 +236,17 @@ log.magenta ('this is magenta colored')
 ```javascript
 mylog = log.configure ({ ... })
 mylog.magenta ('this is magenta colored too')
+```
+
+## Accessing initial arguments
+
+Every step can access it from its configuration parameters, as the `initialArguments` property:
+
+```javascript
+const logThatReturnsFirstArgument = log.configure ({
+
+    'output+': (_, { initialArguments: [first] }) => first // adds a step after the 'output' step
+})
+
+logThatReturnsFirstArgument ('foo', 'bar', 42) // returns 'foo'
 ```

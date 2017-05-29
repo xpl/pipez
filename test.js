@@ -84,7 +84,7 @@ describe ('pipez', () => {
         assert ('<b>ololo</b>', notime.bold ('ololo'))
     })
 
-    it ("Calling methods() on derived objects shouldn't change the one", () => {
+    it ("Calling methods() on derived objects shouldn't change the original one", () => {
 
         notime.methods ({
 
@@ -112,6 +112,16 @@ describe ('pipez', () => {
     it ('.prev + this', () => {
  
         // TODO
+    })
+
+    it ('initialArguments', () => {
+
+        const logThatReturnsFirstArgument = log.configure ({
+
+            'output+': (_, { initialArguments: [first] }) => first
+        })
+
+        assert (logThatReturnsFirstArgument ('foo', 'bar', 42), 'foo')
     })
 })
 
