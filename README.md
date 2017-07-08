@@ -202,7 +202,7 @@ And this schedules to execute just before the `linebreaks` step:
 log.magenta = log.configure ({ '+linebreaks': text => ansicolor.magenta (text) })
 ```
 
-## Executing just part of a sequence:
+## Executing just a part of a sequence:
 
 Executing all steps before a step (_not including_ it):
 
