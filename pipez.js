@@ -33,12 +33,13 @@ const pipez = module.exports = (functions_, prev) => {
 
                     const override = overrides[k],
                           before   = overrides['+' + k] || (x => x),
-                          after    = overrides[k + '+'] || (x => x),
-                          fn       = (typeof override === 'function') ? override : functions[k]
+                          after    = overrides[k + '+'] || (x => x)
 
                     const boundArgs = (typeof override === 'boolean') ? { yes: override } : (override || {})
 
                     modifiedFunctions[k] = function (x, args) {
+
+                        const fn = (typeof override === 'function') ? override : functions[k] // dont cache so people can dynamically change .impl ()
 
                         const newArgs = O.assign ({}, boundArgs, args),
                               maybeFn = (newArgs.yes === false) ? (x => x) : fn
