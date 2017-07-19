@@ -4,6 +4,10 @@ Pipez stands for _pure functional pipelines_. A pipeline is a function composed 
 
 This tiny (~100 lines of code) library implements a novel way for describing it in modern JavaScript, proposing a framework that focuses on easy ad-hoc parameterization of a constructed utility, so you can build incredibly configurable tools with less pain.
 
+## Applications
+
+- [Ololog!](https://github.com/xpl/ololog) — a platform-agnostic logging with blackjack and hookers
+
 ## A case study (toy logging)
 
 Take a logging function as an example, that behaves like `console.log` in general, but has also some fancy additional features, like timestamping and indentation. As the proof of concept, one may come up with the following code (omiting the screen output part):
