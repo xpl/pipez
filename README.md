@@ -4,7 +4,7 @@
 
 Pipez stands for _pure functional pipelines_. A pipeline is a function composed of other functions, like a sequence. It takes some data as input and pushes it down through, transforming it on each stage until the final result is achieved. Each function's output is an input for the next function in a sequence, and so on.
 
-This tiny (~100 lines of code) library implements a novel way for describing it in modern JavaScript, proposing a framework that focuses on easy ad-hoc parameterization of a constructed utility, so you can build incredibly configurable tools with less pain.
+This tiny (~100 lines of code) library implements a novel way for describing it in modern JavaScript, proposing a framework that focuses on easy ad-hoc parameterization of a constructed utility, so you can build [incredibly configurable tools](https://github.com/xpl/ololog) with less pain.
 
 ## A case study (toy logging)
 
@@ -252,3 +252,7 @@ const logThatReturnsFirstArgument = log.configure ({
 
 logThatReturnsFirstArgument ('foo', 'bar', 42) // returns 'foo'
 ```
+
+## Applications
+
+- [Ololog!](https://github.com/xpl/ololog) — a platform-agnostic logging with blackjack and hookers
