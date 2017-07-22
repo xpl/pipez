@@ -20,8 +20,7 @@ describe ('pipez', () => {
             linebreaks: (text, { newline = '\n' })  => text.split (newline),
             timestamp:  (lines, {
                             date = new Date ('2017-02-27T12:45:19.951Z'), // new Date (),
-                            print = date => date.toISOString () + ' ',
-                            margin = '\t'
+                            print = date => date.toISOString () + ' '
                         }) => {
                             const stamp = print (date)
                             return lines.map ((line, i) => ((i === 0) ? stamp : ' '.repeat (stamp.length)) + line)

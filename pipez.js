@@ -1,10 +1,10 @@
-const O = Object
+"use strict";
 
 /*  ------------------------------------------------------------------------ */
 
 const merge = (to, from) => {
 
-    for (const prop in from) { O.defineProperty (to, prop, O.getOwnPropertyDescriptor (from, prop)) }
+    for (const prop in from) { Object.defineProperty (to, prop, Object.getOwnPropertyDescriptor (from, prop)) }
 
     return to
 }
@@ -16,7 +16,7 @@ const pipez = module.exports = (functions_, prev) => {
     let functions = {} // bound to self
 
     const functionNames = Reflect.ownKeys (functions_) // guaranteed to be in property creation order (as defined by the standard)
-    const self = O.assign (
+    const self = Object.assign (
 
     /*  Function of functions (call chain)  */
 
@@ -41,7 +41,7 @@ const pipez = module.exports = (functions_, prev) => {
 
                         const fn = (typeof override === 'function') ? override : functions[k] // dont cache so people can dynamically change .impl ()
 
-                        const newArgs = O.assign ({}, boundArgs, args),
+                        const newArgs = Object.assign ({}, boundArgs, args),
                               maybeFn = (newArgs.yes === false) ? (x => x) : fn
 
                         return after.call (this,
@@ -58,7 +58,7 @@ const pipez = module.exports = (functions_, prev) => {
                 let subset = null
 
                 for (const k of functionNames) {
-                    if (k === name) { subset = { takeFirstArgument: (args, cfg) => args[0] } }
+                    if (k === name) { subset = { takeFirstArgument: args => args[0] } }
                     if (subset) { subset[k] = functions[k] }
                 }
 
@@ -70,7 +70,7 @@ const pipez = module.exports = (functions_, prev) => {
                 let subset = {}
 
                 for (const k of functionNames) {
-                    if (k === name) break;
+                    if (k === name) { break }
                     subset[k] = functions[k]
                 }
 
@@ -86,7 +86,7 @@ const pipez = module.exports = (functions_, prev) => {
         }
     )
 
-    for (let [k, f] of O.entries (functions_)) { functions[k] = f.bind (self) }
+    for (let [k, f] of Object.entries (functions_)) { functions[k] = f.bind (self) }
 
     return self
 }
