@@ -8,7 +8,7 @@ const assert = (...args) => require ('assert')[(args.find (x => typeof x === 'ob
 
 describe ('pipez', () => {
     
-    let pipez = require ('./pipez')
+    let pipez = require (process.env.PIPEZ_TEST_FILE)
     let log, notime
 
     it ('Defining a pipeline', () => {
@@ -46,6 +46,11 @@ describe ('pipez', () => {
                     })
 
         assert ('[27.3.2017] foo, {"bar":42}, qux', log ('foo', { bar: 42 }, 'qux'))
+    })
+
+    it ('overriding a step function', () => {
+
+        assert ('bar\nfoo', log.configure ({ timestamp: false, output: lines => lines.reverse ().join ('\n') }) ('foo\nbar'))
     })
 
     it ('Before/after', () => {
@@ -122,6 +127,11 @@ describe ('pipez', () => {
         })
 
         assert (logThatReturnsFirstArgument ('foo', 'bar', 42), 'foo')
+    })
+
+    it ('configure () with no arguments', () => {
+
+        assert (log.configure () ('foo'), '[27.3.2017] foo')
     })
 })
 
