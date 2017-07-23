@@ -4,11 +4,11 @@
   "description": "Function sequencing reloaded",
   "main": "build/pipez.es5",
   "scripts": {
-    "build": "npm run lint && npm run lint-test && npm run babel && npm run test && npm run test-es5",
+    "build": "npm run lint && npm run lint-test && npm run babel",
     "lint": "eslint pipez.js",
     "lint-test": "eslint test.js",
     "test": "env PIPEZ_TEST_FILE='./pipez' nyc --reporter=html --reporter=text mocha --reporter spec",
-    "test-es5": "env PIPEZ_TEST_FILE='./build/pipez.es5' mocha --reporter spec",
+    "test-es5": "env PIPEZ_TEST_FILE='./build/pipez.es5' nyc --reporter=html --reporter=text mocha --reporter spec",
     "autotest": "env PIPEZ_TEST_FILE='./pipez' mocha --reporter spec --watch",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "babel": "babel pipez.js --source-maps inline --out-file ./build/pipez.es5.js"
