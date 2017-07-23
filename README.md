@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/xpl/pipez.svg?branch=master)](https://travis-ci.org/xpl/pipez) [![Coverage Status](https://coveralls.io/repos/github/xpl/pipez/badge.svg)](https://coveralls.io/github/xpl/pipez) [![npm](https://img.shields.io/npm/v/pipez.svg)](https://npmjs.com/package/pipez) [![dependencies Status](https://david-dm.org/xpl/pipez/status.svg)](https://david-dm.org/xpl/pipez)
 
-Pipez stands for _purely functional pipelines_. A pipeline is a function composed of other functions, like a sequence. It takes some data as input and pushes it down through, transforming it on each stage until the final result is achieved. Each function's output is an input for the next function in a sequence, and so on.
+Pipez stands for _[purely functional](https://en.wikipedia.org/wiki/Purely_functional) pipelines_. A pipeline is a function composed of other functions, like a sequence. It takes some data as input and pushes it down through, transforming it on each stage until the final result is achieved. Each function's output is an input for the next function in a sequence, and so on.
 
 This tiny (~100 lines of code) library implements a novel way for describing it in modern JavaScript, proposing a framework that focuses on easy ad-hoc parameterization of a constructed utility, so you can build [incredibly configurable tools](https://github.com/xpl/ololog) with less pain.
 
