@@ -1,10 +1,10 @@
-# Pipez<sup>BETA</sup>
+# Pipez
 
 [![Build Status](https://travis-ci.org/xpl/pipez.svg?branch=master)](https://travis-ci.org/xpl/pipez) [![Coverage Status](https://coveralls.io/repos/github/xpl/pipez/badge.svg)](https://coveralls.io/github/xpl/pipez) [![npm](https://img.shields.io/npm/v/pipez.svg)](https://npmjs.com/package/pipez) [![dependencies Status](https://david-dm.org/xpl/pipez/status.svg)](https://david-dm.org/xpl/pipez)
 
-Pipez stands for _pure functional pipelines_. A pipeline is a function composed of other functions, like a sequence. It takes some data as input and pushes it down through, transforming it on each stage until the final result is achieved. Each function's output is an input for the next function in a sequence, and so on.
+Pipez stands for _[purely functional](https://en.wikipedia.org/wiki/Purely_functional) pipelines_. A pipeline is a function composed of other functions, like a sequence. It takes some data as input and pushes it down through, transforming it on each stage until the final result is achieved. Each function's output is an input for the next function in a sequence, and so on.
 
-This tiny (~100 lines of code) library implements a novel way for describing it in modern JavaScript, proposing a framework that focuses on easy ad-hoc parameterization of a constructed utility, so you can build [incredibly configurable tools](https://github.com/xpl/ololog) with less pain.
+This tiny [(~100 lines of code)](https://github.com/xpl/pipez/blob/master/pipez.js) library implements a novel way for describing it in modern JavaScript, proposing a framework that focuses on easy ad-hoc parameterization of a constructed utility, so you can build [incredibly configurable tools](https://github.com/xpl/ololog) with less pain.
 
 ## A case study (toy logging)
 
@@ -30,7 +30,7 @@ It kinda "works", but these global configuration params are not looking good. On
 log = ({ indent = 0, timestamp = false }, ...args) =>
 ```
 
-But that's somewhat intrusive, invading the original semantics. With closures and first-class functions, JS offers a better way of separating these concerns:
+But that's somewhat intrusive, invading the original call semantics. With closures and first-class functions, JS offers a better way of separating these concerns:
 
 ```javascript
 configure = ({ indent = 0, timestamp = false }) =>   // Configuration
