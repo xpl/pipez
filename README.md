@@ -1,4 +1,4 @@
-# Pipez<sup>BETA</sup>
+# Pipez
 
 [![Build Status](https://travis-ci.org/xpl/pipez.svg?branch=master)](https://travis-ci.org/xpl/pipez) [![Coverage Status](https://coveralls.io/repos/github/xpl/pipez/badge.svg)](https://coveralls.io/github/xpl/pipez) [![npm](https://img.shields.io/npm/v/pipez.svg)](https://npmjs.com/package/pipez) [![dependencies Status](https://david-dm.org/xpl/pipez/status.svg)](https://david-dm.org/xpl/pipez)
 
