@@ -30,7 +30,7 @@ It kinda "works", but these global configuration params are not looking good. On
 log = ({ indent = 0, timestamp = false }, ...args) =>
 ```
 
-But that's somewhat intrusive, invading the original semantics. With closures and first-class functions, JS offers a better way of separating these concerns:
+But that's somewhat intrusive, invading the original call semantics. With closures and first-class functions, JS offers a better way of separating these concerns:
 
 ```javascript
 configure = ({ indent = 0, timestamp = false }) =>   // Configuration
