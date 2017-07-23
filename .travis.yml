@@ -3,14 +3,15 @@ node_js:
 - node
 script:
 - npm run build
-after_success:
-- npm run coverage
+- git checkout master
 - git config --global user.email "travis@travis-ci.org"
 - git config --global user.name "Travis CI"
 - npm version patch --no-git
 - git commit -am "Travis build \#$TRAVIS_BUILD_NUMBER"
-- git remote add origin-pages https://${GITHUB_TOKEN}@github.com/xpl/pipez.git
-- git push
+- git remote add origin https://${GITHUB_TOKEN}@github.com/xpl/pipez.git
+- git push origin HEAD:master
+after_success:
+- npm run coverage
 deploy:
   provider: npm
   email: rocket.mind@gmail.com
