@@ -122,7 +122,7 @@ describe ('pipez', () => {
 
         const logThatReturnsFirstArgument = log.configure ({
 
-            'output+': (_, { initialArguments: [first] }) => first
+            'output+': (_, { initialArguments }) => initialArguments[0]
         })
 
         assert (logThatReturnsFirstArgument ('foo', 'bar', 42), 'foo')
