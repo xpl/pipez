@@ -1,6 +1,6 @@
 {
   "name": "pipez",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Function sequencing reloaded",
   "main": "build/pipez.es5",
   "scripts": {
