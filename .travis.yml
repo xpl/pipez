@@ -8,8 +8,9 @@ script:
 - git config --global user.email "travis@travis-ci.org"
 - git config --global user.name "Travis CI"
 - npm config set git-tag-version=false
-- npm version patch
-- git commit -am "Travis build \#$TRAVIS_BUILD_NUMBER"
+- NPM_VERSION=$(npm version patch)
+- git commit -am "$NPM_VERSION"
+- git remote remove origin
 - git remote add origin https://${GITHUB_TOKEN}@github.com/xpl/pipez.git
 - git push origin HEAD:master
 deploy:
