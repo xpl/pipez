@@ -2,8 +2,7 @@ language: node_js
 node_js:
 - node
 script:
-- |
-  npm run build
+- npm run build
   && git config --global user.email "travis@travis-ci.org"
   && git config --global user.name "Travis CI"
   && npm version patch --no-git
