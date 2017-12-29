@@ -20,7 +20,7 @@ const pipez = module.exports = (functions_, prev) => {
 
     /*  Function of functions (call chain)  */
 
-        (...initial) => functionNames.reduce ((memo, k) => functions[k].call (self, memo, { initialArguments: initial }), initial),
+        (...initial) => functionNames.reduce ((memo, k) => functions[k].call (self, memo, { initialArguments: initial }), initial), // @hide
 
     /*  Additional methods     */
 
