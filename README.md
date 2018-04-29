@@ -79,7 +79,7 @@ log = ({
 
 And your beautiful tiny several-lines-of-code-proof-of-concept-thing start turning into 500-pound nightmare in production! The new ES6 destructuring/defaults syntax is amazing and helping alot, though.
 
-Again, there exist better ways to deal with such a high degree extensibility. Can you, by the way, tell the biggest problem with the code above? To me, paradoxically, this is the very thing that we considered good until quite recently — the separation of concerns. The actual logic now is starting to split between the externalized and the intrinsic part, and it's becoming harder to grasp the full thing, as you need to constantly switch your attention back and forth while trying to understand what's the code does. As codebase grows and you extract more features into configurable parameters, the problem arise.
+Again, there exist better ways to deal with such a high degree extensibility. Can you, by the way, tell the biggest problem with the code above? To me, paradoxically, this is the very thing that we considered good until quite recently — the separation of concerns. The actual logic now is starting to split between the externalized and the intrinsic part, and it's becoming harder to grasp the full thing, as you need to constantly switch your attention back and forth while trying to understand what's the code does. As the codebase grows and you extract more features into configurable parameters, the problem arise.
 
 This is not really better as the global parameters... Wouldn't it be nice, if we could somehow modularize the thing, finding a way of specifying the external parameters and their default values just along with the code that uses it?
 
